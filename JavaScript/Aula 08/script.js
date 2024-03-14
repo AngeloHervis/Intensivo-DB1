@@ -102,3 +102,34 @@ else
     for (let i = 0; i < 10; i++) {
         console.log(i)
     }
+
+    n1 = 10
+if (n1 > 5)
+    console.log("Maior que 5")
+else if (n1 === 5) {
+    console.log("Igual a 5")
+} else {
+    console.log("Menor que 5")
+}
+
+
+// switch case
+
+let code = 1
+
+switch (code) {
+    case 1:
+        console.log("tv Samsung")
+    case 1001:
+    case 10:
+        console.log("Ligar/Desligar tv")
+        break
+    case 11:
+        console.log("Aumentar volume")
+        break
+    case 12:
+        console.log("Diminuir volume")
+        break
+    default:
+        console.log("Não sei tratar.. ignorar codigo")
+}
