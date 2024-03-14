@@ -283,3 +283,48 @@ console.log(pessoa.blabla?.address[10]?.city)
 if (pessoa.blabla && pessoa.blablab.address[10]) {
     pessoa.blabla.address[10].city
 }
+
+const cache = [{ id: 1, name: "Igor" }]
+const database = [{ id: 1, name: "Igor" }, { id: 2, name: "John Doo" }]
+
+const findOnCache = (personId) => {
+    return new Promise((resolve, reject) => {
+        const user = cache.find(user => user.id === personId);
+        if (user) return resolve(user)
+        reject("user not found")
+    })
+}
+
+const findOnDatabase = (personId) => {
+    return new Promise((resolve, reject) => {
+        const user = database.find(user => user.id === personId);
+        if (user) return resolve(user)
+        reject("user not found")
+    })
+}
+
+
+const findUser = (userId) => {
+    findOnCache(userId).catch(() => {
+        return findOnDatabase(userId)
+    }).then(user => {
+        console.log(user)
+    }).catch(exception => {
+        console.log(exception)
+    })
+}
+findUser(2)
+
+const findUser2 = async (userId) => {
+    try {
+        let user;
+        try {
+            user = await findOnCache(userId);
+        } catch (error) {
+            user = await findOnDatabase(userId)
+        }
+        console.log(user)
+    } catch (err) {
+        console.log(err)
+    }
+}
