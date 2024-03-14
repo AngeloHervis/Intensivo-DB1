@@ -133,3 +133,153 @@ switch (code) {
     default:
         console.log("Não sei tratar.. ignorar codigo")
 }
+
+const t = () => {
+    switch (code) {
+        case 1:
+            console.log("tv Samsung")
+        case 1001:
+        case 10:
+            return console.log("Ligar/Desligar tv")
+        case 11:
+            return console.log("Aumentar volume")
+        case 12:
+            return console.log("Diminuir volume")
+        default:
+            console.log("Não sei tratar.. ignorar codigo")
+    }
+}
+
+// Loops
+
+n1 = 100
+
+while (n1 < 100) { // executa de 0 a N vezes
+    console.log(n1, "ainda é menor do que 100")
+    n1 += 1;
+}
+console.log(n1, "não é mais menor do que 100")
+
+do { // executa de 1 a N vezes (executa pelo menos 1 vez)
+    console.log(n1, "ainda é menor do que 100 [DO WHILE]")
+} while (n1 < 100)
+
+// i++ -> i += 1 -> i = i + 1
+// i-- -> i -= 1 -> i = i - 1
+for (let i = 0; i < 100; i++) {
+    if (i % 2 === 0) continue
+    console.log(i)
+}
+
+function t2() {
+    for (let i = 0; i < 100; i++) {
+        if (i % 2 === 0) return i
+    }
+}
+
+// Arrays
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8]
+
+arr.push(10) // [1, 2, 3, 4, 5, 6, 7, 8, 10]
+arr.pop() // [1, 2, 3, 4, 5, 6, 7, 8]
+arr.unshift(10) // [10, 1, 2, 3, 4, 5, 6, 7, 8]
+arr.shift() // [1, 2, 3, 4, 5, 6, 7, 8]
+
+// --------------------
+
+arr.length // tamanho do array -> 8
+// arr[0] -> arr[7]
+
+arr[10] // -> undefined
+
+arr.forEach((value) => {
+    console.log(value)
+})
+
+const newArray = arr.map((value) => {
+    return value * 2
+})
+
+console.log(newArray)
+
+console.log(arr.findIndex((value) => value === 3))
+
+const newArray2 = arr.filter((value) => value % 2 === 1)
+
+console.log(newArray2)
+console.log(arr)
+
+const soma = arr.reduce((soma, value) => {
+    return soma + value
+}, 0)
+
+console.log(soma)
+
+const arr2 = [3, 2, 10, 9, 1, 29];
+const orderedArray = arr2.sort((a, b) => a - b)
+
+// a = 3
+// b = 2
+// a - b => 3 - 2 -> + -> troco
+// a = 2
+// b = 10 => 2 - 10 -> -8 -> - -> não troca
+
+console.log(orderedArray)
+
+// objetos
+
+const pessoa = {
+    name: "John Doo",
+    age: 10,
+    job: "Programmer",
+    phones: ["9999999999", "888888888888"],
+    address: [
+        {
+            street: "1",
+            city: "avadsa"
+        },
+        {
+            street: "1",
+            city: "avadsa"
+        },
+        {
+            street: "1",
+            city: "avadsa"
+        }
+    ]
+}
+
+console.log(JSON.stringify(pessoa))
+
+console.log(JSON.parse(`{
+    "name": "John Doo",
+    "age": 10,
+    "job": "Programmer",
+    "phones": [
+        "9999999999",
+        "888888888888"
+    ],
+    "address": [
+        {
+            "street": "1",
+            "city": "avadsa"
+        },
+        {
+            "street": "1",
+            "city": "avadsa"
+        },
+        {
+            "street": "1",
+            "city": "avadsa"
+        }
+    ]
+}`))
+
+pessoa["name"] // pessoa.name
+
+console.log(pessoa.blabla?.address[10]?.city)
+
+if (pessoa.blabla && pessoa.blablab.address[10]) {
+    pessoa.blabla.address[10].city
+}
